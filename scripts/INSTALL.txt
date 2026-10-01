@@ -1,0 +1,42 @@
+PRIVATEPILOT - CONTROLLED BROWSER PRIVACY LAYER
+
+INSTALLATION
+1. Extract the ZIP. Do not load the ZIP itself.
+2. Open chrome://extensions in Chrome or a compatible Chromium browser.
+3. Enable Developer mode and select Load unpacked.
+4. Choose the extracted privatepilot-extension folder containing manifest.json.
+   Do not choose its parent folder or the manifest.json file itself.
+5. In extension Details, review the broad site-access permission. Choose
+   On all sites to use the local guard across normal HTTP and HTTPS webpages.
+6. Reload the target webpage after loading the extension.
+7. Select PrivatePilot's toolbar button to open its side panel. Review Local
+   Context compares the original local text with the redacted safe context.
+8. Run Visual Scan only if you want a local OCR scan. Tesseract and English
+   language data are bundled. Screenshots and raw OCR text stay local.
+
+CURRENT ASSISTANT LIMITATION
+Local DOM redaction and optional OCR do not need the assistant backend.
+The current extension sends /api/privatepilot/assist requests to the active
+webpage's origin. Assistant replies and suggested actions therefore require
+a page served by the existing PrivatePilot backend. Installing this ZIP does
+not provide an assistant service for arbitrary websites. Every supported
+field-fill action requires explicit user confirmation.
+
+PRIVACY AND TECHNICAL BOUNDARIES
+- Use fictional data only for demonstrations of the controlled workflow.
+- Detection is heuristic. OCR may miss blurred, stylised, or obscured text.
+- Chrome restricts browser-internal pages, extension pages, the Chrome Web
+  Store, and other protected pages.
+- PrivatePilot does not intercept or control Claude in Chrome, Perplexity
+  Comet, ChatGPT, or any other closed browser AI product.
+- Chrome does not guarantee it runs before another browser agent reads a page.
+- A normal chatbot cannot read a private logged-in page merely from its URL.
+  The privacy risk starts when a browser assistant is allowed to read the tab.
+- Original page context and real-value-to-placeholder mappings stay local.
+  Raw page text, screenshots, raw OCR text, cookies, passwords, OTPs, and
+  placeholder mappings must never be uploaded to the assistant.
+- In the controlled workflow, only redacted safeContext and the user's
+  question are sent. Avoid including private values in your question.
+
+PROJECT: PrivatePilot / SIH26171
+PROBLEM: On-device Visual Perception for Light-weight Browser Agents

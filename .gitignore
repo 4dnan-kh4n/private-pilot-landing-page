@@ -1,0 +1,39 @@
+# Dependencies and generated output
+node_modules/
+dist/
+build/
+coverage/
+.cache/
+.vite/
+.vercel/
+/downloads/
+
+# Secrets and local configuration
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+credentials*.json
+service-account*.json
+
+# Logs, temporary files, and review media
+*.log
+*.pid
+*.pid.lock
+tmp/
+temp/
+screenshots/
+recordings/
+*.zip
+# The verified public extension download is intentionally included.
+!public/downloads/privatepilot.zip
+
+# Editor and operating-system files
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+desktop.ini

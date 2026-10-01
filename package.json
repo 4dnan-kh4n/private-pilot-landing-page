@@ -1,0 +1,27 @@
+{
+  "name": "privatepilot-website",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1 --port 5173 --strictPort",
+    "package:extension": "powershell -NoProfile -File scripts/package-extension.ps1",
+    "check:package": "powershell -NoProfile -File scripts/package-extension.ps1 -VerifyOnly",
+    "build": "npm run package:extension && vite build",
+    "build:vercel": "node scripts/check-release.js && vite build",
+    "start": "node server.js",
+    "check": "node --check server.js && node --check vite.config.js && node --check scripts/check-release.js",
+    "test": "node --test"
+  },
+  "dependencies": {
+    "express": "^4.21.2",
+    "helmet": "^8.0.0",
+    "motion": "^13.2.0",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^5.0.2",
+    "vite": "^7.1.3"
+  }
+}

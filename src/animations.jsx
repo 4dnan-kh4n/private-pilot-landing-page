@@ -31,19 +31,19 @@ export function PrivacyDemo() {
   const [paused, setPaused] = useState(false);
   const reduced = useReducedMotion();
   const fields = [
-    ['Name', 'Alex Morgan', 'PERSON_1'],
-    ['Email', 'alex@example.test', 'EMAIL_1'],
-    ['Account', 'DEMO-0427', 'ACCOUNT_1'],
+    ['Name', 'Adnan Khan', 'PERSON_1'],
+    ['Email', 'adnanuitit@gmail.com', 'EMAIL_1'],
+    ['Account', '123456789542', 'ACCOUNT_1'],
   ];
   return <figure className={`privacy-demo${paused ? ' demo-paused' : ''}`}>
     <div className="demo-toolbar"><span>Privacy in motion</span>{!reduced && <button type="button" className="demo-pause"
       aria-label={paused ? 'Play workflow animation' : 'Pause workflow animation'} onClick={() => setPaused(value => !value)}>{paused ? 'Play' : 'Pause'}</button>}</div>
-    <div className="demo-visual" role="img" aria-label="Fictional page details are scanned and replaced with placeholders locally. Only redacted context reaches the controlled PrivatePilot assistant.">
+    <div className="demo-visual" role="img" aria-label="Example page details are scanned and replaced with placeholders locally. Only redacted context reaches the controlled PrivatePilot assistant.">
       <div aria-hidden="true">
         <div className="demo-browser">
           <div className="demo-browser-bar"><span className="demo-window-dots"><i /><i /><i /></span><span>Active browser tab</span><svg className="demo-tab-lock" viewBox="0 0 24 24"><rect x="5" y="10" width="14" height="11" rx="2" /><path d="M8 10V7a4 4 0 0 1 8 0v3" /></svg></div>
           <div className="demo-page">
-            <div className="demo-page-heading"><span>Your application</span><small>Fictional example</small></div>
+            <div className="demo-page-heading"><span>Your application</span><small>Example details</small></div>
             <div className="demo-fields">{fields.map(([label, raw, safe]) => <div className="demo-field" key={label}>
               <span className="demo-field-label">{label}</span><div className="demo-value"><span className="demo-raw">{raw}</span><span className="demo-safe">{safe}</span></div>
             </div>)}<span className="demo-scan-beam" /></div>

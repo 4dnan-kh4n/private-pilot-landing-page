@@ -38,26 +38,26 @@ export function PrivacyDemo() {
   return <figure className={`privacy-demo${paused ? ' demo-paused' : ''}`}>
     <div className="demo-toolbar"><span>Privacy in motion</span>{!reduced && <button type="button" className="demo-pause"
       aria-label={paused ? 'Play workflow animation' : 'Pause workflow animation'} onClick={() => setPaused(value => !value)}>{paused ? 'Play' : 'Pause'}</button>}</div>
-    <div className="demo-visual" role="img" aria-label="Example page details are scanned and replaced with placeholders locally. Only redacted context reaches the controlled PrivatePilot assistant.">
+    <div className="demo-visual" role="img" aria-label="PrivatePilot checks the example text in your browser and swaps private details for labels. Its assistant receives the labels instead of the real details.">
       <div aria-hidden="true">
         <div className="demo-browser">
-          <div className="demo-browser-bar"><span className="demo-window-dots"><i /><i /><i /></span><span>Active browser tab</span><svg className="demo-tab-lock" viewBox="0 0 24 24"><rect x="5" y="10" width="14" height="11" rx="2" /><path d="M8 10V7a4 4 0 0 1 8 0v3" /></svg></div>
+          <div className="demo-browser-bar"><span className="demo-window-dots"><i /><i /><i /></span><span>Your open page</span><svg className="demo-tab-lock" viewBox="0 0 24 24"><rect x="5" y="10" width="14" height="11" rx="2" /><path d="M8 10V7a4 4 0 0 1 8 0v3" /></svg></div>
           <div className="demo-page">
             <div className="demo-page-heading"><span>Your application</span><small>Example details</small></div>
             <div className="demo-fields">{fields.map(([label, raw, safe]) => <div className="demo-field" key={label}>
               <span className="demo-field-label">{label}</span><div className="demo-value"><span className="demo-raw">{raw}</span><span className="demo-safe">{safe}</span></div>
             </div>)}<span className="demo-scan-beam" /></div>
-            <div className="demo-local-guard"><svg viewBox="0 0 24 24"><path d="m12 3 8 3v6c0 5-4 8-8 10-4-2-8-5-8-10V6Z" /><path d="m8 12 3 3 5-6" /></svg><span>PrivatePilot<span>Detect & redact on your device</span></span><i /></div>
+            <div className="demo-local-guard"><svg viewBox="0 0 24 24"><path d="m12 3 8 3v6c0 5-4 8-8 10-4-2-8-5-8-10V6Z" /><path d="m8 12 3 3 5-6" /></svg><span>PrivatePilot<span>Hide private details in your browser</span></span><i /></div>
           </div>
         </div>
-        <div className="demo-handoff"><span className="demo-connection" /><span className="demo-packet">{ '{ }' }</span><span className="demo-handoff-label">Redacted context only</span></div>
-        <div className="demo-assistant"><div className="demo-assistant-heading"><span className="demo-assistant-icon">✦</span><div>PrivatePilot assistant<small>Controlled workflow</small></div></div>
+        <div className="demo-handoff"><span className="demo-connection" /><span className="demo-packet">{ '{ }' }</span><span className="demo-handoff-label">Private details replaced</span></div>
+        <div className="demo-assistant"><div className="demo-assistant-heading"><span className="demo-assistant-icon">✦</span><div>PrivatePilot assistant<small>Labels, not real details</small></div></div>
           <div className="demo-safe-payload"><span>PERSON_1</span><span>EMAIL_1</span><span>ACCOUNT_1</span></div>
         </div>
-        <div className="demo-steps"><span>01 <b>Scan locally</b></span><span>02 <b>Replace values</b></span><span>03 <b>Share safely</b></span></div>
+        <div className="demo-steps"><span>01 <b>Check text</b></span><span>02 <b>Hide details</b></span><span>03 <b>Ask for help</b></span></div>
       </div>
     </div>
-    <figcaption>Local detection → placeholders → controlled assistance</figcaption>
+    <figcaption>Check text → hide details → ask our assistant</figcaption>
   </figure>;
 }
 
@@ -118,7 +118,7 @@ export function Workflow({ steps }) {
     window.addEventListener('resize', schedule);
     return () => { cancelAnimationFrame(frame); window.removeEventListener('scroll', schedule); window.removeEventListener('resize', schedule); };
   }, []);
-  return <div className="container workflow-stage" aria-label="PrivatePilot controlled privacy workflow" ref={stage}>
+  return <div className="container workflow-stage" aria-label="How PrivatePilot works, step by step" ref={stage}>
     <div className="workflow-field" aria-hidden="true"><span className="vertical-flow-line" />
       {!reduced && <motion.span className="vertical-flow-drop" style={{ '--flow-progress': dropTop }} />}</div>
     <ol className="vertical-workflow">{steps.map((step, index) => <li key={step.title}>
@@ -131,7 +131,7 @@ export function Workflow({ steps }) {
         <span>Step {String(index + 1).padStart(2, '0')}</span><h3>{step.title}</h3><p>{step.description}</p>
       </article>
     </li>)}</ol>
-    <div className="workflow-result"><span>Outcome</span><strong>Useful assistance. Private values kept local.</strong></div>
+    <div className="workflow-result"><span>Result</span><strong>AI help. Your private details stay in your browser.</strong></div>
   </div>;
 }
 

@@ -37,8 +37,8 @@ const questions = [
 
 function BrandMark() {
   return <a className="brand-mark" href="#home" aria-label="PrivatePilot home">
-    <svg aria-hidden="true" viewBox="0 0 42 42"><path d="M21 5 35 11v10c0 8-7 13-14 16C14 34 7 29 7 21V11Z" /><path d="m14 21 5 5 10-11" /></svg>
-    <span><strong>PRIVATEPILOT</strong><small>Privacy before AI</small></span>
+    <img src="/privatepilot-logo.png" alt="" width="42" height="42" />
+    <span><strong>PrivatePilot</strong><small>Privacy before AI</small></span>
   </a>;
 }
 

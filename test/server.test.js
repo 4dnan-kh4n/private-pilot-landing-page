@@ -40,7 +40,7 @@ test('downloads the verified versioned ZIP with correct headers and byte integri
   const server = app.listen(0, '127.0.0.1');
   try {
     await once(server, 'listening');
-    const url = `http://127.0.0.1:${server.address().port}/downloads/privatepilot.zip`;
+    const url = `http://127.0.0.1:${server.address().port}/downloads/privatepilot.zip?v=${release.version}`;
     const head = await fetch(url, { method: 'HEAD' });
     assert.equal(head.status, 200);
     assert.equal(Number(head.headers.get('content-length')), release.sizeBytes);

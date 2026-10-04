@@ -5,7 +5,7 @@ import { PrivacyDemo, Pillars, PrivacyWord, SiteCursor, SmoothScroll, Workflow }
 import './styles.css';
 import release from './release.json';
 
-const downloadUrl = '/downloads/privatepilot.zip';
+const downloadUrl = `/downloads/privatepilot.zip?v=${release.version}`;
 
 const navigation = [
   { href: '#about', label: 'About' },

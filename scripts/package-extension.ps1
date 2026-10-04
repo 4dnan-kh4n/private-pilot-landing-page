@@ -22,7 +22,9 @@ if ($manifest.manifest_version -ne 3 -or $manifest.version -notmatch '^\d+(?:\.\
 $files = @(
     'manifest.json', 'service-worker.js', 'capture.js', 'pii.js', 'guard.js',
     'content-script.js', 'visual-overlay.js', 'visual.js', 'sidepanel.html',
-    'sidepanel.css', 'sidepanel.js', 'vendor/tesseract/tesseract.min.js',
+    'sidepanel.css', 'sidepanel.js', 'privatepilot-logo.png',
+    'icons/icon-16.png', 'icons/icon-32.png', 'icons/icon-48.png', 'icons/icon-128.png',
+    'vendor/tesseract/tesseract.min.js',
     'vendor/tesseract/worker.min.js', 'vendor/tesseract/core/tesseract-core-lstm.wasm.js',
     'vendor/tesseract/core/tesseract-core-lstm.wasm', 'vendor/tesseract/lang/eng.traineddata.gz'
 )
@@ -75,7 +77,11 @@ try {
         if ($actualHash.ToLowerInvariant() -ne (Get-FileDigest $source)) { throw "Archive bytes differ from source: $file" }
     }
     $required = @($manifest.background.service_worker, $manifest.side_panel.default_path)
-    foreach ($script in $manifest.content_scripts) { $required += $script.js }
+    $required += $manifest.icons.PSObject.Properties.Value
+    $required += $manifest.action.default_icon.PSObject.Properties.Value
+    if ($manifest.PSObject.Properties.Name -contains 'content_scripts') {
+        foreach ($script in $manifest.content_scripts) { $required += $script.js }
+    }
     $html = Get-Content -LiteralPath (Join-Path $extensionRoot $manifest.side_panel.default_path) -Raw
     foreach ($match in [regex]::Matches($html, '(?:src|href)="([^"]+)"')) { $required += $match.Groups[1].Value }
     foreach ($file in $required) {
